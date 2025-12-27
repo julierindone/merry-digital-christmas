@@ -29,8 +29,7 @@ body {
 	gap: 1rem;
 	align-items: center;
 	justify-content: space-between;
-	background: url(./images/xmas_mini.jpg) bottom 8% center no-repeat;
-	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.75)), url(./images/xmas_mini.jpg) bottom 8% center no-repeat;
+	background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.75)), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 
