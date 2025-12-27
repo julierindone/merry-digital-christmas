@@ -1,7 +1,5 @@
-import { recipients } from "../data.js";
+import { recipients } from "./data.js";
 
-const greeting = document.getElementById('greeting')
-const recipientName = document.getElementById('recipient-name')
 const mainContent = document.getElementById('main-content')
 let emailAddress = 'Oscar@cats.com'
 
