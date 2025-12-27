@@ -18,6 +18,6 @@
   "homepage": "https://github.com/julierindone/merry-digital-christmas#readme",
   "description": "",
   "dependencies": {
-    "@neondatabase/neon-js": "^0.1.0-beta.21"
+    "@netlify/neon": "^0.1.0"
   }
 }
