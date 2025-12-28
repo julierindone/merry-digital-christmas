@@ -17,7 +17,7 @@ body {
 	gap: 1rem;
 	align-items: center;
 	justify-content: space-between;
-	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.75)), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat;
+	background: linear-gradient(#0000009a,#000000a1), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 	padding-inline: 3.5%;
@@ -84,7 +84,7 @@ div#main-content {
 }
 
 footer.sign-off {
-	font-size: clamp(1.05rem, 0.45rem + 2.8vw, 1.8rem);
+	font-size: clamp(1.05rem,0.6rem + 2.8vw,1.8rem);
 	width: min(100%, var(--max-width));
 
 	> p {

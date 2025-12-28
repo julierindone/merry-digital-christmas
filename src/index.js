@@ -1,7 +1,7 @@
 import { recipients } from "./data.js";
 
 const mainContent = document.getElementById('main-content')
-let emailAddress = 'Oscar@cats.com'
+const urlTest = 'http://127.0.0.1:5500/?emailAddress=Oscar'
 
 renderCard()
 
@@ -11,6 +11,9 @@ function renderCard() {
 }
 
 function getRecipient() {
+  let params = new URLSearchParams(location.search)
+  let emailAddress = params.get("emailAddress")
+
   return recipients.filter((person) => {
     return person.email === emailAddress
   })[0]
