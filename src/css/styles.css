@@ -3,7 +3,7 @@
 	--transp-black: #121212ba;
 	--ice-blue-text: #7ec4cfc9;
 	--ice-blue: #abe1e6;
-	--max-width: 900px;
+	--max-width: 880px;
 }
 
 html {
@@ -17,35 +17,36 @@ body {
 	gap: 1rem;
 	align-items: center;
 	justify-content: space-between;
-	background: linear-gradient(#0000009a,#000000a1), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat;
+	background: linear-gradient(#0000009f, #000000a5), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 	padding-inline: 3.5%;
-	padding-block: 1.1rem .8rem;
+	padding-block: 1.2em 1em;
 	color: var(--ice-blue-text);
 }
 
 /* ========== LAYOUT ========== */
 
 header {
-	width: min(100%, 940px);
+	width: min(100%, (var(--max-width) - 20px));
+	margin-bottom: 0.5em;
 }
 
 main {
 	flex: 1 0;
 	width: min(98%, var(--max-width));
-	/* overflow-y: auto; */
 }
 
 /* ========== TYPOGRAPHY ========== */
 
 .boldonse-regular {
 	font-family: "Boldonse", system-ui;
-	letter-spacing: 0.03em;
+	letter-spacing: 0.025em;
 	font-variant: petite-caps;
 	font-weight: 400;
 	text-wrap: balance;
 	word-spacing: .04em;
+	opacity: .9;
 	text-shadow:
 		1.15px 1.15px 1px var(--black),
 		1.15px -1.15px 1px var(--black),
@@ -55,45 +56,57 @@ main {
 }
 
 h1 {
-	font-size: clamp(1rem, 0.1rem + 8.6vw, 2.6rem);
-	line-height: 1.65;
+	font-size: clamp(1rem, 9.3vw, 3.1rem);
+	line-height: 1.6;
 	text-align: center;
 	margin-inline: auto;
 }
 
 div#main-content {
-	font-size: clamp(1.05rem, 0.2rem + 4.5vw, 1.5rem);
-
 	> p {
 		font-family: "Montserrat", sans-serif;
-		font-weight: 600;
-		line-height: 1.45;
-		word-spacing: .03em;
+		word-spacing: .02em;
 		text-shadow:
 			1px 1px 1px var(--black),
 			1px -1px 1px var(--black),
 			-1px 1px 1px var(--black),
 			-1px -1px 1px var(--black);
-		margin-bottom: 0.95rem;
 		width: fit-content;
+		backdrop-filter: blur(1.25px) brightness(94%);
+		margin-bottom: 0.9em;
+		font-weight: 600;
+		line-height: 1.75;
+	}
 
-		&:first-child {
-			font-size: 1.22em;
+	&.short-message {
+		padding-inline: 1em;
+
+		p {
+			font-size: clamp(1.34rem, 0.2rem + 2.6vw, 1.5rem);
+		}
+	}
+
+	&.long-message {
+		margin-top: -0.2em;
+
+		p {
+			font-size: clamp(1.135rem, 0.45rem + 1.9vw, 1.2rem);
 		}
 	}
 }
 
 footer.sign-off {
-	font-size: clamp(1.05rem,0.6rem + 2.8vw,1.8rem);
+	font-size: clamp(1.025rem, 0.2rem + 4.75vw, 2rem);
 	width: min(100%, var(--max-width));
 
 	> p {
 		font-size: 1em;
-		line-height: 2.05;
+		line-height: 2.06;
+		letter-spacing: .03em;
 	}
 
 	> p:first-child {
-		font-size: 0.87em;
+		font-size: 0.85em;
 	}
 }
 
@@ -101,16 +114,67 @@ footer.sign-off {
 
 @media (width > 650px) {
 	body {
-		padding-block: 1.5em 1em;
+		padding-block: 1.8em 1em;
 	}
 
-	h1 {
-		font-size: clamp(2.3rem, 0.156rem + 4.75vw, 3.1rem);
+	header > h1 {
+		font-size: clamp(2.1rem, 5.1vw, 3rem);
+		line-height: 1.6;
+	}
+
+	main {
+		width: min(96%, var(--max-width) - 4%);
+	}
+
+	div#main-content {
+		> p {
+			backdrop-filter: blur(1.5px) brightness(88%);
+			line-height: 1.73;
+		}
+
+		&.short-message > p {
+			font-size: clamp(1.34rem, 0.32rem + 2.6vw, 1.5rem);
+			margin-bottom: 1.1em;
+		}
+
+		&.long-message {
+			> p {
+				font-size: clamp(1.1rem, 0.4rem + 2.65vw, 1.3rem);
+			}
+		}
 	}
 }
 
-@media (width > 900px) {
+@media (width > 880px) {
+	main {
+		width: min(90%, 840px);
+	}
+
 	footer.sign-off > p {
 		text-align: center;
+	}
+}
+
+@media (width < 400px) {
+	div#main-content {
+		/* moves filter to cover whole block */
+		backdrop-filter: blur(1.5px) brightness(88%);
+
+		&.short-message,
+		&.long-message {
+			> p {
+				backdrop-filter: unset;
+			}
+		}
+
+		&.short-message {
+			> p {
+				font-size: 1.22rem;
+			}
+		}
+
+		&.long-message > p {
+			font-size: 1.05rem;
+		}
 	}
 }
