@@ -4,6 +4,7 @@
   "main": "index.js",
   "dependencies": {
     "@netlify/neon": "^0.1.0",
+    "netlify-cli": "^23.13.0",
     "obuf": "^1.1.2",
     "pg-int8": "^1.0.1",
     "pg-numeric": "^1.0.2",
