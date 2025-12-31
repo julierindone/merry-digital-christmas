@@ -3,4 +3,3 @@ node_modules
 # For building locally
 .env
 .netlify
-netlify.toml
