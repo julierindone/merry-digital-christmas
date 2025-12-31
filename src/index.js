@@ -1,43 +1,53 @@
-import { recipients } from "./data.js";
-
 const mainContent = document.getElementById('main-content')
+let cardRecipient = ''
 
-renderCard()
+document.addEventListener('DOMContentLoaded', async () => {
+  await getRecipient()
 
-function renderCard() {
-  const recipient = getRecipient()
-  createHTML(recipient)
-}
+  console.log('inside eventlistener! cardRecipient: ', cardRecipient)
+  console.log(typeof cardRecipient)
+  createHTML()
+})
 
-function getRecipient() {
+async function getRecipient() {
   let params = new URLSearchParams(location.search)
-  let emailAddress = params.get("emailAddress")
+  let emailAddress = params.get("email")
 
-  return recipients.filter((person) => {
-    return person.email === emailAddress.toLowerCase()
+  const response = await fetch('/.netlify/functions/get_recipients');
+  const recipients = await response.json();
+
+  const recipient = recipients.filter((person) => {
+    return person.email.toLowerCase() === emailAddress.toLowerCase()
   })[0]
+
+  cardRecipient = {
+    firstName: recipient.first_name,
+    inPortland: recipient.home[0],
+    location: recipient.home[1],
+    personalMessage: recipient.personal_message
+  }
 }
 
-function createHTML(recipient) {
+function createHTML() {
   let html = ``
 
   let recipientName = `
-    <p><span>Dear ${recipient.firstName},</span></p>
-    <p>Phew! What a wild ride 2025 has been. `
+    <p>To ${cardRecipient.firstName},</p>
+    <p>What a wild ride 2025 has been! `
 
   let home = ''
 
-  if (recipient.home.inPortland) {
-    home = `I'm so glad to be back in Portland and that I get to see you more often.... even if I have to travel <i>all the way</i> to ${recipient.home.location} to do so. </p>`
+  if (cardRecipient.inPortland === 'true') {
+    home = `I'm so glad to be back in Portland and that I get to see you more often.... even if I have to travel <i>all the way</i> to ${cardRecipient.location} to do so. </p>`
   }
   else {
-    home = `I'm back in Portland, and you're in ${recipient.home.location}, but I'm hopeful that at some point in 2026 we'll end up in the same place at the same time.</p>`
+    home = `I'm back in Portland, and you're in ${cardRecipient.location}, but I'm hopeful that at some point in 2026 we'll find ourselves in the same place at the same time.</p>`
   }
 
   let customMessage = ''
 
-  if (recipient.personalMessage) {
-    customMessage = `<p>${recipient.personalMessage}</p>`
+  if (cardRecipient.personalMessage) {
+    customMessage = `<p>${cardRecipient.personalMessage}</p>`
   }
 
   // shorter message = font larger
