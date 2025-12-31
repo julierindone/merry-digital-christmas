@@ -3,9 +3,6 @@ let cardRecipient = ''
 
 document.addEventListener('DOMContentLoaded', async () => {
   await getRecipient()
-
-  console.log('inside eventlistener! cardRecipient: ', cardRecipient)
-  console.log(typeof cardRecipient)
   createHTML()
 })
 
