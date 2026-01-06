@@ -6,6 +6,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   createHTML()
 })
 
+nerdStuff.addEventListener('click', () => {
+  if (nerdStatus === 'hidden') {
+    nerdContent.style.display = 'block'
+    nerdStuff.innerText = '[click to close]'
+    nerdStatus = 'displayed'
+  }
+  else {
+    nerdContent.style.display = 'none'
+    nerdStuff.innerText = '[click for nerd stuff]'
+    nerdStatus = 'hidden'
+  }
+})
+
 async function getRecipient() {
   let params = new URLSearchParams(location.search)
   let emailAddress = params.get("email")
@@ -30,7 +43,7 @@ function createHTML() {
 
   let recipientName = `
     <p>To ${cardRecipient.firstName},</p>
-    <p>What a wild ride 2025 has been! `
+    <p>What a wild ride 2025 was! `
 
   let home = ''
 
