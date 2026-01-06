@@ -6,7 +6,11 @@ let nerdStatus = 'hidden'
 
 document.addEventListener('DOMContentLoaded', async () => {
   await getRecipient()
-  createHTML()
+
+  // if recipient found in db, load custom message. else, load default.
+  if (cardRecipient) {
+    createHTML()
+  }
 })
 
 nerdStuff.addEventListener('click', () => {
@@ -26,18 +30,24 @@ async function getRecipient() {
   let params = new URLSearchParams(location.search)
   let emailAddress = params.get("email")
 
-  const response = await fetch('/.netlify/functions/get_recipients');
-  const recipients = await response.json();
+  if (!emailAddress) {
+  }
+  else {
+    const response = await fetch('/.netlify/functions/get_recipients');
+    const recipients = await response.json();
 
-  const recipient = recipients.filter((person) => {
-    return person.email.toLowerCase() === emailAddress.toLowerCase()
-  })[0]
+    const recipient = recipients.filter((person) => {
+      return person.email.toLowerCase() === emailAddress.toLowerCase()
+    })[0]
 
-  cardRecipient = {
-    firstName: recipient.first_name,
-    inPortland: recipient.home[0],
-    location: recipient.home[1],
-    personalMessage: recipient.personal_message
+    if (recipient) {
+      cardRecipient = {
+        firstName: recipient.first_name,
+        inPortland: recipient.home[0],
+        location: recipient.home[1],
+        personalMessage: recipient.personal_message
+      }
+    }
   }
 }
 
@@ -65,11 +75,11 @@ function createHTML() {
 
   // shorter message = font larger
   if (recipientName.length + home.length + customMessage.length < 300) {
-    mainContent.classList.add('short-message')
+    mainContent.classList.replace('default-message', 'short-message')
   }
   else {
     // longer message (max 440ish) = font is smaller.
-    mainContent.classList.add('long-message')
+    mainContent.classList.replace('default-message', 'long-message')
   }
   mainContent.innerHTML = recipientName + home + customMessage
 }

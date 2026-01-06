@@ -64,30 +64,53 @@ h1 {
 
 div#main-content {
 	> p {
-		font-family: "Montserrat", sans-serif;
-		color: #81d9e6de;
-		word-spacing: .02em;
-		text-shadow:
-			1px 1px 1px var(--black),
-			1px -1px 1px var(--black),
-			-1px 1px 1px var(--black),
-			-1px -1px 1px var(--black);
-		width: fit-content;
-		backdrop-filter: blur(1.25px) brightness(90%);
-		margin-bottom: 0.88em;
-		font-weight: 600;
-		line-height: 1.8;
-	}
+		backdrop-filter: blur(1.1px) brightness(93%);
+		padding-inline: 1%;
+		margin-bottom: 0.91em;
 
-	&.short-message {
-		padding-inline: 1em;
-
-		p {
-			font-size: clamp(1.34rem, 0.2rem + 2.6vw, 1.5rem);
+		&:first-child {
+			width: fit-content;
 		}
 	}
 
-	&.long-message p {
+	&.default-message {
+		font-size: clamp(1.4rem, 0.5rem + 4.2vw, 1.7rem);
+		margin-top: 0.7em;
+
+		> p {
+			font-style: italic;
+			line-height: 1.5;
+			margin-top: 0.54em;
+			margin-bottom: 0;
+		}
+
+		& :last-child {
+			font-size: .85em;
+			text-align: right;
+		}
+	}
+
+	&.short-message {
+		> p {
+			font-size: 1.39rem;
+			line-height: 1.77;
+		}
+
+		& p:last-child {
+			margin-bottom: .2em;
+		}
+	}
+
+	&.long-message {
+		> p {
+			font-size: 1.18rem;
+			line-height: 1.7;
+			padding-inline: unset;
+		}
+	}
+
+	& p:last-child {
+		margin-bottom: .2em;
 	}
 }
 
@@ -122,8 +145,7 @@ article#nerd-content {
 	}
 }
 
-footer.sign-off {
-	font-size: clamp(1.02rem, 0.664rem + 2.6vw, 1.8rem);
+.sign-off {
 	width: min(98%, var(--max-width));
 
 	> p {
@@ -168,9 +190,12 @@ footer.sign-off {
 
 	div#main-content {
 		> p {
-			line-height: 1.9;
-			backdrop-filter: blur(0.5px) brightness(92%);
-			margin-bottom: 0.85em;
+		}
+
+		&.default-message {
+			font-size: clamp(1.8rem, 3.15vw, 2.1rem);
+			width: min(83%, var(--max-width) - 4%);
+			margin-inline: auto;
 		}
 
 		&.short-message > p {
@@ -178,6 +203,8 @@ footer.sign-off {
 		}
 
 		&.long-message > p {
+			font-size: clamp(1.32rem, 0.5rem + 1.43vw, 1.35rem);
+			line-height: 1.77;
 		}
 	}
 
@@ -185,7 +212,8 @@ footer.sign-off {
 		width: 95%;
 	}
 
-	footer.sign-off {
+		& #nerd-stuff {
+			margin: unset;
 		}
 	}
 }
@@ -205,16 +233,6 @@ footer.sign-off {
 		width: min(97%, var(--max-width));
 	}
 	div#main-content {
-		/* moves filter to cover whole block */
-		backdrop-filter: blur(1.5px) brightness(88%);
-
-		&.short-message,
-		&.long-message {
-			> p {
-				backdrop-filter: unset;
-			}
-		}
-
 		&.short-message {
 			> p {
 				font-size: 1.15rem;
@@ -222,7 +240,8 @@ footer.sign-off {
 		}
 
 		&.long-message > p {
-			font-size: 1.04rem;
+			font-size: 1.005rem;
+			line-height: 1.65;
 		}
 	}
 }
