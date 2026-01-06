@@ -1,9 +1,11 @@
 :root {
-	--black: #121212;
-	--transp-black: #121212ba;
-	--ice-blue-text: #7ec4cfc9;
-	--ice-blue: #abe1e6;
-	--max-width: 880px;
+	--black: #121212cc;
+	--ice-blue: #7dbed0;
+	--darker-ice-blue: #5893a2dd;
+	--ice-blue-gradient: radial-gradient(transparent, #679faebb, transparent);
+	--max-width: 860px;
+	--boldonse-text-shadow: 1.15px 1.15px 1px var(--black), 1.15px -1.15px 1px var(--black), -1.15px 1.15px 1px var(--black), -1.15px -1.15px 1px var(--black);
+	--main-text-shadow: 1px 1px 10px var(--black), 1px -1px 10px var(--black), -1px 1px 10px var(--black), -1px -1px 10px var(--black);
 }
 
 html {
@@ -14,22 +16,21 @@ body {
 	min-height: 100dvh;
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 0.8rem;
 	align-items: center;
 	justify-content: space-between;
-	background: linear-gradient(#0000009f, #000000a8), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat;
+	background: linear-gradient(#00000091, 40%, #000000a9), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 	padding-inline: 3.5%;
-	padding-block: 2.1vh 1.6vh;
-	color: var(--ice-blue-text);
+	padding-block: 2vh 1vh;
 }
 
 /* ========== LAYOUT ========== */
 
 header {
 	width: min(100%, (var(--max-width) - 20px));
-	margin-bottom: 0.5em;
+	margin-bottom: 0.2em;
 }
 
 main {
@@ -41,25 +42,38 @@ main {
 
 .boldonse-regular {
 	font-family: "Boldonse", system-ui;
-	letter-spacing: 0.025em;
 	font-variant: petite-caps;
 	font-weight: 400;
 	text-wrap: pretty;
 	word-spacing: .04em;
-	opacity: .92;
-	text-shadow:
-		1.15px 1.15px 1px var(--black),
-		1.15px -1.15px 1px var(--black),
-		-1.15px 1.15px 1px var(--black),
-		-1.15px -1.15px 1px var(--black);
+	text-shadow: var(--boldonse-text-shadow);
 	-webkit-text-stroke: 0.5px var(--black);
 }
 
 h1 {
-	font-size: clamp(1rem, 9.3vw, 3.1rem);
+	font-size: clamp(1rem, -0.15rem + 9.7vw, 3rem);
+	letter-spacing: 0.02em;
 	line-height: 1.6;
 	text-align: center;
-	margin-inline: auto;
+}
+
+p {
+	font-weight: 500;
+}
+
+header,
+footer {
+	color: var(--darker-ice-blue);
+}
+
+main {
+	font-family: "Montserrat", sans-serif;
+	width: fit-content;
+	word-spacing: .02em;
+	color: var(--ice-blue);
+	-webkit-text-stroke: 0.15px var(--black);
+	text-shadow: var(--main-text-shadow);
+	padding-inline: 2.5%;
 }
 
 div#main-content {
@@ -142,29 +156,45 @@ article#nerd-content {
 			margin-bottom: 0;
 		}
 
+		& span::after {
+			color: red;
+			font-weight: normal;
+		}
+
+		& span#css-def::after {
+			content: " (Cascading Style Sheets - they tell the web browser how to display a website's contents. I love CSS.)";
+		}
+
+		& span#responsive-web-def::after {
+			content: " (Building websites so they're readable and navigable regardless of what type of device you're using.)"
+		}
+
+		& span#postgresql-def::after {
+			content: " (A type of open-source database. I've hosted mine on a platform called Neon and it stores all the information needed to write and send your card.)"
+		}
 	}
 }
 
 .sign-off {
+	font-size: clamp(1.02rem, 0.56rem + 3.52vw, 2rem);
 	width: min(98%, var(--max-width));
+	letter-spacing: .005em;
 
 	> p {
-		font-size: 1em;
-		line-height: 2.06;
+		line-height: 1.95;
+
+		> span {
+			font-size: 0.83em;
+		}
 	}
 
-	> p:first-child {
-		font-size: 0.83em;
-	}
 	> #nerd-stuff {
 		font-family: 'Montserrat';
-		font-size: clamp(0.74rem, 0.38rem + 1.5vw, .95rem);
-		text-align: right;
-		font-weight: 600;
+		font-size: clamp(0.8rem, 0.38rem + 1.5vw, 1rem);
 		font-variant: normal;
-		text-transform: lowercase;
 		width: fit-content;
-		margin: -0.3vh -1.3vw -0.2vh auto;
+		-webkit-text-stroke: 0;
+		margin: -0.23vh -1.3vw -0.2vh auto;
 	}
 }
 
@@ -172,15 +202,15 @@ article#nerd-content {
 
 @media (width > 650px) {
 	body {
-		padding-block: 3.3vh 2vh;
-		;
+		padding-block: 3.8vh 2vh;
 	}
 
 	header {
 		margin-bottom: 0.7em;
 
 		> h1 {
-			font-size: clamp(2.1rem, 5.1vw, 3rem);
+			font-size: clamp(2.05rem, 5.3vw, 3.05rem);
+			letter-spacing: 0;
 		}
 	}
 
@@ -190,6 +220,8 @@ article#nerd-content {
 
 	div#main-content {
 		> p {
+			backdrop-filter: blur(0.5px) brightness(95%);
+			margin-bottom: 1em;
 		}
 
 		&.default-message {
@@ -212,6 +244,14 @@ article#nerd-content {
 		width: 95%;
 	}
 
+	.sign-off {
+		display: flex;
+		gap: 1.5em;
+		align-items: end;
+		justify-content: space-between;
+		font-size: clamp(1.5rem, -0.5rem + 5vw, 2rem);
+		margin-bottom: 0;
+
 		& #nerd-stuff {
 			margin: unset;
 		}
@@ -219,23 +259,18 @@ article#nerd-content {
 }
 
 @media (width > 880px) {
-	main {
-		width: min(90%, 840px);
-	}
 
-	footer.sign-off > p {
-		text-align: center;
+	main,
+	.sign-off {
+		width: min(89%, 840px);
 	}
 }
 
-@media (width < 400px) {
-	main {
-		width: min(97%, var(--max-width));
-	}
+@media (width < 385px) {
 	div#main-content {
 		&.short-message {
 			> p {
-				font-size: 1.15rem;
+				font-size: 1.12rem;
 			}
 		}
 
