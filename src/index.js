@@ -1,5 +1,8 @@
 const mainContent = document.getElementById('main-content')
+const nerdContent = document.getElementById('nerd-content')
+const nerdStuff = document.getElementById('nerd-stuff')
 let cardRecipient = ''
+let nerdStatus = 'hidden'
 
 document.addEventListener('DOMContentLoaded', async () => {
   await getRecipient()
