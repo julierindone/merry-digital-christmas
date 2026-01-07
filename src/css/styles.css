@@ -1,11 +1,14 @@
 :root {
 	--black: #121212cc;
-	--ice-blue: #7dbed0;
-	--darker-ice-blue: #5893a2dd;
-	--ice-blue-gradient: radial-gradient(transparent, #679faebb, transparent);
+	--transp-ice-blue: #7dbed0c0;
+	/* --ice-blue: #7dbed0; */
+	--ice-blue: #86d1e1;
+	/* --darker-ice-blue: #5893a2dd; */
+	--darker-ice-blue: #5d98a6f8;
+	--ice-blue-gradient: radial-gradient(transparent, #5d98a6dd, transparent);
 	--max-width: 860px;
 	--boldonse-text-shadow: 1.15px 1.15px 1px var(--black), 1.15px -1.15px 1px var(--black), -1.15px 1.15px 1px var(--black), -1.15px -1.15px 1px var(--black);
-	--main-text-shadow: 1px 1px 10px var(--black), 1px -1px 10px var(--black), -1px 1px 10px var(--black), -1px -1px 10px var(--black);
+	--main-text-shadow: 1px 1px 8px var(--black), 1px -1px 8px var(--black), -1px 1px 8px var(--black), -1px -1px 8px var(--black);
 }
 
 html {
@@ -19,7 +22,9 @@ body {
 	gap: 0.8rem;
 	align-items: center;
 	justify-content: space-between;
-	background: linear-gradient(#00000091, 40%, #000000a9), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat;
+	/* background: linear-gradient(#00000091, 40%, #000000a9), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat; */
+	/* background: linear-gradient(#00000079, 40%, #00000090), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat; */
+	background: linear-gradient(#0000006a, 40%, #00000080), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 	padding-inline: 3.5%;
@@ -78,9 +83,9 @@ main {
 
 div#main-content {
 	> p {
-		backdrop-filter: blur(1.1px) brightness(93%);
-		padding-inline: 1%;
-		margin-bottom: 0.91em;
+		backdrop-filter: blur(1.1px) brightness(90%);
+		width: fit-content;
+		line-height: 1.62;
 
 		&:first-child {
 			width: fit-content;
@@ -150,6 +155,9 @@ article#nerd-content {
 
 		& span {
 			font-weight: 700;
+			text-decoration: underline dotted var(--transp-ice-blue) 1px;
+			text-underline-offset: 3px;
+
 		}
 
 		&:last-child {
@@ -158,7 +166,7 @@ article#nerd-content {
 
 		& span::after {
 			color: #b6dae4;
-			font-weight: normal;
+			font-weight: 500;
 			font-style: italic;
 			margin-inline: .4em;
 		}
@@ -222,7 +230,7 @@ article#nerd-content {
 
 	div#main-content {
 		> p {
-			backdrop-filter: blur(0.5px) brightness(95%);
+			backdrop-filter: blur(0.5px) brightness(92%);
 			margin-bottom: 1em;
 		}
 
