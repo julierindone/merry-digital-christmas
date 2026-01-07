@@ -1,14 +1,15 @@
 :root {
 	--black: #121212cc;
-	--transp-ice-blue: #7dbed0c0;
-	/* --ice-blue: #7dbed0; */
-	--ice-blue: #86d1e1;
-	/* --darker-ice-blue: #5893a2dd; */
-	--darker-ice-blue: #5d98a6f8;
-	--ice-blue-gradient: radial-gradient(transparent, #5d98a6dd, transparent);
+	--white: #ccedf6;
+	--transp-ice-blue: hsla(187, 61%, 82%, 0.7);
+	/* --ice-blue: #afe3eb; */
+	--ice-blue: hsl(190, 70%, 79%);
+	/* --darker-ice-blue: hsla(192, 29%, 51%, 0.973); */
+	--darker-ice-blue: hsl(190, 40%, 55%);
+	--ice-blue-gradient: radial-gradient(transparent, hsl(187, 62%, 30%), transparent);
 	--max-width: 860px;
 	--boldonse-text-shadow: 1.15px 1.15px 1px var(--black), 1.15px -1.15px 1px var(--black), -1.15px 1.15px 1px var(--black), -1.15px -1.15px 1px var(--black);
-	--main-text-shadow: 1px 1px 8px var(--black), 1px -1px 8px var(--black), -1px 1px 8px var(--black), -1px -1px 8px var(--black);
+	--main-text-shadow: 1px 1px 5px var(--black), 1px -1px 5px var(--black), -1px 1px 5px var(--black), -1px -1px 5px var(--black);
 }
 
 html {
@@ -22,13 +23,12 @@ body {
 	gap: 0.8rem;
 	align-items: center;
 	justify-content: space-between;
-	/* background: linear-gradient(#00000091, 40%, #000000a9), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat; */
-	/* background: linear-gradient(#00000079, 40%, #00000090), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat; */
-	background: linear-gradient(#0000006a, 40%, #00000080), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat;
+	/* background: linear-gradient(#0000006a, 40%, #00000080), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat; */
+	background: linear-gradient(#00000079, 35%, #000000b4, #0000009f), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 	padding-inline: 3.5%;
-	padding-block: 2vh 1vh;
+	padding-block: 2.15vh 1.12vh;
 }
 
 /* ========== LAYOUT ========== */
@@ -50,13 +50,13 @@ main {
 	font-variant: petite-caps;
 	font-weight: 400;
 	text-wrap: pretty;
-	word-spacing: .04em;
+	word-spacing: 0.04em;
 	text-shadow: var(--boldonse-text-shadow);
-	-webkit-text-stroke: 0.5px var(--black);
+	-webkit-text-stroke: 0.5px var(--black) !important;
 }
 
 h1 {
-	font-size: clamp(1rem, -0.15rem + 9.7vw, 3rem);
+	font-size: clamp(1rem, -0.14rem + 9.3vw, 2.8rem);
 	letter-spacing: 0.02em;
 	line-height: 1.6;
 	text-align: center;
@@ -64,6 +64,7 @@ h1 {
 
 p {
 	font-weight: 500;
+	-webkit-text-stroke: 0.15px var(--black);
 }
 
 header,
@@ -73,102 +74,87 @@ footer {
 
 main {
 	font-family: "Montserrat", sans-serif;
-	width: fit-content;
-	word-spacing: .02em;
+	line-height: 1.63;
+	word-spacing: 0.02em;
 	color: var(--ice-blue);
-	-webkit-text-stroke: 0.15px var(--black);
 	text-shadow: var(--main-text-shadow);
 	padding-inline: 2.5%;
 }
 
 div#main-content {
-	> p {
-		backdrop-filter: blur(1.1px) brightness(90%);
-		width: fit-content;
-		line-height: 1.62;
+	backdrop-filter: blur(1.2px) brightness(90%);
 
-		&:first-child {
-			width: fit-content;
+	> p {
+		margin-bottom: 0.85em;
+
+		&:last-child {
+			margin-bottom: 0;
 		}
 	}
 
 	&.default-message {
-		font-size: clamp(1.4rem, 0.5rem + 4.2vw, 1.7rem);
-		margin-top: 0.7em;
+		font-size: clamp(1.2rem, 0.5rem + 3.3vw, 1.5rem);
 
 		> p {
 			font-style: italic;
-			line-height: 1.5;
-			margin-top: 0.54em;
-			margin-bottom: 0;
+			margin-block: 0.5em 0;
 		}
 
 		& :last-child {
-			font-size: .85em;
+			font-size: 0.9em;
 			text-align: right;
 		}
 	}
 
-	&.short-message {
-		> p {
-			font-size: 1.39rem;
-			line-height: 1.77;
-		}
-
-		& p:last-child {
-			margin-bottom: .2em;
-		}
+	&.short-message > p {
+		font-size: clamp(1.1rem, 0.3rem + 3.7vw, 1.25rem);
 	}
 
-	&.long-message {
-		> p {
-			font-size: 1.18rem;
-			line-height: 1.7;
-			padding-inline: unset;
-		}
-	}
-
-	& p:last-child {
-		margin-bottom: .2em;
+	&.long-message > p {
+		font-size: clamp(1.19rem, 0.5rem + 1.4vw, 1.35rem);
 	}
 }
 
 article#nerd-content {
 	display: none;
-	margin-block: 1.6em 0.5em;
-	font-size: clamp(1rem, 2.13vw, 1.1rem);
-	width: 96%;
+	font-size: clamp(1rem, 2.1vw, 1.05rem);
+	width: 98%;
+	padding-inline: 0.5%;
+	margin-inline: auto;
 
 	hr {
 		background-image: var(--ice-blue-gradient);
 		height: 2px;
+		width: 86%;
+		opacity: 0.75;
 		border: none;
-		margin-bottom: 1.5em;
+		margin-block: 1.3em;
 	}
 
+	backdrop-filter: blur(1.5px) brightness(89%);
+	border: black solid 0;
+	border-radius: 30px;
+
 	p {
-		line-height: 1.75;
-		backdrop-filter: blur(1.5px) brightness(94%);
-		font-weight: 500;
-		margin-left: .1em;
 		margin-bottom: 1.1em;
 
 		& span {
 			font-weight: 700;
 			text-decoration: underline dotted var(--transp-ice-blue) 1px;
-			text-underline-offset: 3px;
+			text-underline-offset: 0.275em;
 
 		}
 
 		&:last-child {
-			margin-bottom: 0;
+			margin-bottom: .2em;
 		}
 
 		& span::after {
-			color: #b6dae4;
+			color: var(--white);
+			font-size: .98em;
 			font-weight: 500;
 			font-style: italic;
-			margin-inline: .4em;
+			margin-inline: 0.25em;
 		}
 
 		& .css-def::after {
@@ -186,25 +172,25 @@ article#nerd-content {
 }
 
 .sign-off {
-	font-size: clamp(1.02rem, 0.56rem + 3.52vw, 2rem);
-	width: min(98%, var(--max-width));
-	letter-spacing: .005em;
+	font-size: clamp(1rem, 0.4rem + 3.5vw, 1.7rem);
+	width: min(96%, var(--max-width));
+	letter-spacing: 0.01em;
 
 	> p {
 		line-height: 1.95;
 
 		> span {
-			font-size: 0.83em;
+			font-size: 0.82em;
 		}
 	}
 
 	> #nerd-stuff {
 		font-family: 'Montserrat';
-		font-size: clamp(0.8rem, 0.38rem + 1.5vw, 1rem);
+		font-size: clamp(0.82rem, 0.38rem + 1.4vw, 0.99rem);
 		font-variant: normal;
-		width: fit-content;
 		-webkit-text-stroke: 0;
-		margin: -0.23vh -1.3vw -0.2vh auto;
+		width: fit-content;
+		margin: -0.2vh -0.7vw -0.1vh auto;
 	}
 }
 
@@ -212,46 +198,47 @@ article#nerd-content {
 
 @media (width > 650px) {
 	body {
-		padding-block: 3.8vh 2vh;
+		padding-block: 3.5vh 1.4vh;
 	}
 
 	header {
-		margin-bottom: 0.7em;
+		margin-bottom: 0.4em;
 
 		> h1 {
-			font-size: clamp(2.05rem, 5.3vw, 3.05rem);
+			font-size: clamp(2.05rem, 5.2vw, 3.05rem);
 			letter-spacing: 0;
 		}
 	}
 
 	main {
-		width: min(96%, var(--max-width) - 4%);
-	}
+		width: min(92%, var(--max-width) - 6%);
 
-	div#main-content {
-		> p {
-			backdrop-filter: blur(0.5px) brightness(92%);
-			margin-bottom: 1em;
+		div#main-content {
+			> p {
+				backdrop-filter: blur(0.5px) brightness(89%);
+				line-height: 1.72;
+			}
+
+			&.default-message {
+				font-size: clamp(1.56rem, 3.15vw, 1.7rem);
+				width: 80%;
+				margin-inline: auto;
+
+				> p {
+					margin-block: 0.4em 0;
+				}
+			}
+
+			&.short-message > p {
+				font-size: clamp(1.3rem, 0.32rem + 2.2vw, 1.48rem);
+				font-weight: 400;
+				padding-inline: 0.5em;
+			}
+
+			&.long-message > p {
+				font-size: clamp(1.18rem, 0.5rem + 1.43vw, 1.2rem);
+			}
 		}
-
-		&.default-message {
-			font-size: clamp(1.8rem, 3.15vw, 2.1rem);
-			width: min(83%, var(--max-width) - 4%);
-			margin-inline: auto;
-		}
-
-		&.short-message > p {
-			font-size: clamp(1.34rem, 0.32rem + 2.2vw, 1.6rem);
-		}
-
-		&.long-message > p {
-			font-size: clamp(1.32rem, 0.5rem + 1.43vw, 1.35rem);
-			line-height: 1.77;
-		}
-	}
-
-	article#nerd-content {
-		width: 95%;
 	}
 
 	.sign-off {
@@ -259,8 +246,12 @@ article#nerd-content {
 		gap: 1.5em;
 		align-items: end;
 		justify-content: space-between;
-		font-size: clamp(1.5rem, -0.5rem + 5vw, 2rem);
+		font-size: clamp(1.45rem, -0.5rem + 4vw, 1.9rem);
 		margin-bottom: 0;
+
+		> p > span {
+			font-size: 0.78em;
+		}
 
 		& #nerd-stuff {
 			margin: unset;
@@ -273,20 +264,5 @@ article#nerd-content {
 	main,
 	.sign-off {
 		width: min(89%, 840px);
-	}
-}
-
-@media (width < 385px) {
-	div#main-content {
-		&.short-message {
-			> p {
-				font-size: 1.12rem;
-			}
-		}
-
-		&.long-message > p {
-			font-size: 1.005rem;
-			line-height: 1.65;
-		}
 	}
 }
