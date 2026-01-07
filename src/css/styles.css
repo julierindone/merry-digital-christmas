@@ -1,12 +1,10 @@
 :root {
 	--black: #121212cc;
 	--white: #ccedf6;
-	--transp-ice-blue: hsla(187, 61%, 82%, 0.7);
-	/* --ice-blue: #afe3eb; */
+	--transp-ice-blue: hsla(190, 61%, 82%, 0.7);
 	--ice-blue: hsl(190, 70%, 79%);
-	/* --darker-ice-blue: hsla(192, 29%, 51%, 0.973); */
 	--darker-ice-blue: hsl(190, 40%, 55%);
-	--ice-blue-gradient: radial-gradient(transparent, hsl(187, 62%, 30%), transparent);
+	--ice-blue-gradient: radial-gradient(transparent, hsl(190, 62%, 30%), transparent);
 	--max-width: 860px;
 	--boldonse-text-shadow: 1.15px 1.15px 1px var(--black), 1.15px -1.15px 1px var(--black), -1.15px 1.15px 1px var(--black), -1.15px -1.15px 1px var(--black);
 	--main-text-shadow: 1px 1px 5px var(--black), 1px -1px 5px var(--black), -1px 1px 5px var(--black), -1px -1px 5px var(--black);
@@ -23,18 +21,17 @@ body {
 	gap: 0.8rem;
 	align-items: center;
 	justify-content: space-between;
-	/* background: linear-gradient(#0000006a, 40%, #00000080), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat; */
 	background: linear-gradient(#00000079, 35%, #000000b4, #0000009f), url(../assets/images/xmas_mini.jpg) bottom 8% center no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
 	padding-inline: 3.5%;
-	padding-block: 2.15vh 1.12vh;
+	padding-block: 2.25vh 1.12vh;
 }
 
 /* ========== LAYOUT ========== */
 
 header {
-	width: min(100%, (var(--max-width) - 20px));
+	width: min(99%, (var(--max-width) - 20px));
 	margin-bottom: 0.2em;
 }
 
@@ -49,14 +46,14 @@ main {
 	font-family: "Boldonse", system-ui;
 	font-variant: petite-caps;
 	font-weight: 400;
-	text-wrap: pretty;
+	text-wrap: balance;
 	word-spacing: 0.04em;
 	text-shadow: var(--boldonse-text-shadow);
 	-webkit-text-stroke: 0.5px var(--black) !important;
 }
 
 h1 {
-	font-size: clamp(1rem, -0.14rem + 9.3vw, 2.8rem);
+	font-size: clamp(1rem, -0.14rem + 9.5vw, 2.8rem);
 	letter-spacing: 0.02em;
 	line-height: 1.6;
 	text-align: center;
@@ -93,16 +90,19 @@ div#main-content {
 	}
 
 	&.default-message {
-		font-size: clamp(1.2rem, 0.5rem + 3.3vw, 1.5rem);
+		font-size: clamp(1.2rem, 0.5rem + 3.3vw, 1.45rem);
+		width: min(88%, 420px);
+		margin-inline: auto;
 
 		> p {
 			font-style: italic;
-			margin-block: 0.5em 0;
+			margin-block: 0.35em 0;
 		}
 
 		& :last-child {
-			font-size: 0.9em;
+			font-size: 0.885em;
 			text-align: right;
+			margin-top: 1em;
 		}
 	}
 
@@ -205,7 +205,7 @@ article#nerd-content {
 		margin-bottom: 0.4em;
 
 		> h1 {
-			font-size: clamp(2.05rem, 5.2vw, 3.05rem);
+			font-size: clamp(2.18rem, 5.2vw, 3.05rem);
 			letter-spacing: 0;
 		}
 	}
@@ -223,10 +223,6 @@ article#nerd-content {
 				font-size: clamp(1.56rem, 3.15vw, 1.7rem);
 				width: 80%;
 				margin-inline: auto;
-
-				> p {
-					margin-block: 0.4em 0;
-				}
 			}
 
 			&.short-message > p {

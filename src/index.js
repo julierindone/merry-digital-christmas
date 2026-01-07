@@ -1,7 +1,7 @@
 const mainContent = document.getElementById('main-content')
 const nerdContent = document.getElementById('nerd-content')
 const nerdStuff = document.getElementById('nerd-stuff')
-let cardRecipient = ''
+let cardRecipient = null
 let nerdStatus = 'hidden'
 const cssTerm = document.getElementById('css-term')
 const responsiveTerm = document.getElementById('responsive-term')
@@ -12,11 +12,7 @@ let postgresqlDefShown = false
 
 document.addEventListener('DOMContentLoaded', async () => {
   await getRecipient()
-
-  // if recipient found in db, load custom message. else, load default.
-  if (cardRecipient) {
-    createHTML()
-  }
+  createHTML()
 })
 
 document.addEventListener('click', function (e) {
@@ -29,7 +25,7 @@ document.addEventListener('click', function (e) {
   else if (e.target.id === 'responsive-term') {
     handleResponsiveTermExpansion()
   }
-  else {
+  else if (e.target.id === 'postgresql-term') {
     handlepostgresqlTermExpansion()
   }
 })
@@ -79,6 +75,7 @@ async function getRecipient() {
     if (recipient) {
       cardRecipient = {
         firstName: recipient.first_name,
+        lastName: recipient.last_name,
         inPortland: recipient.home[0],
         location: recipient.home[1],
         personalMessage: recipient.personal_message
@@ -90,32 +87,45 @@ async function getRecipient() {
 function createHTML() {
   let html = ``
 
-  let recipientName = `
-    <p>To ${cardRecipient.firstName},</p>
-    <p>What a wild ride 2025 was! `
-
-  let home = ''
-
-  if (cardRecipient.inPortland === 'true') {
-    home = `I'm so glad to be back in Portland and that I get to see you more often.... even if I have to travel <i>all the way</i> to ${cardRecipient.location} to do so. </p>`
+  if (cardRecipient === null) {
+    mainContent.classList.add('default-message')
+    mainContent.innerHTML = `
+    	<p>This will be our year,</p>
+			<p>Took a long time to come.</p>
+			<p>- The Zombies</p>`
   }
+
   else {
-    home = `I'm back in Portland, and you're in ${cardRecipient.location}, but I'm hopeful that at some point in 2026 we'll find ourselves in the same place at the same time.</p>`
-  }
+    let recipientName = `
+            <p>To ${cardRecipient.firstName},</p>
+            <p>What a wild ride 2025 was! `
 
-  let customMessage = ''
+    let home = ''
 
-  if (cardRecipient.personalMessage) {
-    customMessage = `<p>${cardRecipient.personalMessage}</p>`
-  }
+    if (cardRecipient.lastName === 'Cain' || cardRecipient.lastName === 'Baber') {
+      home = '</p>'
+    }
+    else if (cardRecipient.inPortland === 'true') {
+      home = `I'm so glad to be back in Portland and that I get to see you more often.... even if I have to travel <i>all the way</i> to ${cardRecipient.location} to do so. </p>`
+    }
+    else {
+      home = `I'm back in Portland, and you're in ${cardRecipient.location}, but I'm hopeful that at some point in 2026 we'll find ourselves in the same place at the same time.</p>`
+    }
 
-  // shorter message = font larger
-  if (recipientName.length + home.length + customMessage.length < 300) {
-    mainContent.classList.replace('default-message', 'short-message')
+    let customMessage = ''
+
+    if (cardRecipient.personalMessage) {
+      customMessage = `<p>${cardRecipient.personalMessage}</p>`
+    }
+
+    // shorter message = font larger
+    if (recipientName.length + home.length + customMessage.length < 340) {
+      mainContent.classList.add('short-message')
+    }
+    else {
+      // longer message (max 440ish) = font is smaller.
+      mainContent.classList.add('long-message')
+    }
+    mainContent.innerHTML = recipientName + home + customMessage
   }
-  else {
-    // longer message (max 440ish) = font is smaller.
-    mainContent.classList.replace('default-message', 'long-message')
-  }
-  mainContent.innerHTML = recipientName + home + customMessage
 }
