@@ -149,7 +149,7 @@ article#nerd-content {
 		margin-bottom: 1.1em;
 
 		& span {
-			font-weight: 600;
+			font-weight: 700;
 		}
 
 		&:last-child {
@@ -157,20 +157,22 @@ article#nerd-content {
 		}
 
 		& span::after {
-			color: red;
+			color: #b6dae4;
 			font-weight: normal;
+			font-style: italic;
+			margin-inline: .4em;
 		}
 
-		& span#css-def::after {
-			content: " (Cascading Style Sheets - they tell the web browser how to display a website's contents. I love CSS.)";
+		& .css-def::after {
+			content: " [Cascading Style Sheets - they tell the browser how to display a website's contents.]"
 		}
 
-		& span#responsive-web-def::after {
-			content: " (Building websites so they're readable and navigable regardless of what type of device you're using.)"
+		& .responsive-def::after {
+			content: " [Building websites so they're readable and navigable regardless of what type of device you're using.]"
 		}
 
-		& span#postgresql-def::after {
-			content: " (A type of open-source database. I've hosted mine on a platform called Neon and it stores all the information needed to write and send your card.)"
+		& .postgresql-def::after {
+			content: " [A type of open-source database. I've hosted mine on a platform called Neon and it stores all the information needed to write and send your card.]"
 		}
 	}
 }

@@ -3,6 +3,12 @@ const nerdContent = document.getElementById('nerd-content')
 const nerdStuff = document.getElementById('nerd-stuff')
 let cardRecipient = ''
 let nerdStatus = 'hidden'
+const cssTerm = document.getElementById('css-term')
+const responsiveTerm = document.getElementById('responsive-term')
+const postgresqlTerm = document.getElementById('postgresql-term')
+let cssDefShown = false
+let responsiveDefShown = false
+let postgresqlDefShown = false
 
 document.addEventListener('DOMContentLoaded', async () => {
   await getRecipient()
@@ -13,7 +19,22 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 })
 
-nerdStuff.addEventListener('click', () => {
+document.addEventListener('click', function (e) {
+  if (e.target.id === 'nerd-stuff') {
+    showNerdStuff()
+  }
+  else if (e.target.id === 'css-term') {
+    handleCssTermExpansion()
+  }
+  else if (e.target.id === 'responsive-term') {
+    handleResponsiveTermExpansion()
+  }
+  else {
+    handlepostgresqlTermExpansion()
+  }
+})
+
+function showNerdStuff() {
   if (nerdStatus === 'hidden') {
     nerdContent.style.display = 'block'
     nerdStuff.innerText = '[click to close]'
@@ -24,7 +45,22 @@ nerdStuff.addEventListener('click', () => {
     nerdStuff.innerText = '[click for nerd stuff]'
     nerdStatus = 'hidden'
   }
-})
+}
+
+function handleCssTermExpansion() {
+  cssDefShown ? cssTerm.classList.remove('css-def') : cssTerm.classList.add('css-def')
+  cssDefShown = !cssDefShown
+}
+
+function handleResponsiveTermExpansion() {
+  responsiveDefShown ? responsiveTerm.classList.remove('responsive-def') : responsiveTerm.classList.add('responsive-def')
+  responsiveDefShown = !responsiveDefShown
+}
+
+function handlepostgresqlTermExpansion() {
+  postgresqlDefShown ? postgresqlTerm.classList.remove('postgresql-def') : postgresqlTerm.classList.add('postgresql-def')
+  postgresqlDefShown = !postgresqlDefShown
+}
 
 async function getRecipient() {
   let params = new URLSearchParams(location.search)
