@@ -1,7 +1,7 @@
 :root {
 	--black: #121212cc;
 	--white: #ccedf6;
-	--transp-ice-blue: hsla(190, 61%, 82%, 0.7);
+	--transp-ice-blue: hsla(190, 61%, 82%, 0.8);
 	--ice-blue: hsl(190, 70%, 79%);
 	--darker-ice-blue: hsl(190, 40%, 55%);
 	--ice-blue-gradient: radial-gradient(transparent, hsl(190, 62%, 30%), transparent);
@@ -37,7 +37,7 @@ header {
 
 main {
 	flex: 1 0;
-	width: min(96%, var(--max-width));
+	width: min(98.5%, var(--max-width));
 }
 
 /* ========== TYPOGRAPHY ========== */
@@ -75,7 +75,7 @@ main {
 	word-spacing: 0.02em;
 	color: var(--ice-blue);
 	text-shadow: var(--main-text-shadow);
-	padding-inline: 2.5%;
+	padding-inline: 1%;
 }
 
 div#main-content {
@@ -111,7 +111,7 @@ div#main-content {
 	}
 
 	&.long-message > p {
-		font-size: clamp(1.19rem, 0.5rem + 1.4vw, 1.35rem);
+		font-size: clamp(1.14rem, 0.5rem + 1.4vw, 1.35rem);
 	}
 }
 
@@ -140,7 +140,7 @@ article#nerd-content {
 
 		& span {
 			font-weight: 700;
-			text-decoration: underline dotted var(--transp-ice-blue) 1px;
+			text-decoration: underline dotted var(--transp-ice-blue) 1.5px;
 			text-underline-offset: 0.275em;
 
 		}
