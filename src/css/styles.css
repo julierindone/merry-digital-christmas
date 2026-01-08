@@ -2,8 +2,8 @@
 	--black: #121212cc;
 	--white: #ccedf6;
 	--transp-ice-blue: hsla(190, 61%, 82%, 0.8);
-	--ice-blue: hsl(190, 70%, 79%);
-	--darker-ice-blue: hsl(190, 40%, 55%);
+	--ice-blue: hsl(190, 60%, 79%);
+	--darker-ice-blue: hsl(190, 30%, 55%);
 	--ice-blue-gradient: radial-gradient(transparent, hsl(190, 62%, 30%), transparent);
 	--max-width: 860px;
 	--boldonse-text-shadow: 1.15px 1.15px 1px var(--black), 1.15px -1.15px 1px var(--black), -1.15px 1.15px 1px var(--black), -1.15px -1.15px 1px var(--black);
@@ -172,7 +172,7 @@ article#nerd-content {
 }
 
 .sign-off {
-	font-size: clamp(1rem, 0.4rem + 3.5vw, 1.7rem);
+	font-size: clamp(1.1rem, 0.4rem + 3.8vw, 1.7rem);
 	width: min(96%, var(--max-width));
 	letter-spacing: 0.01em;
 
